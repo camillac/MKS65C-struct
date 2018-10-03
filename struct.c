@@ -3,7 +3,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-struct pokemon {char name[6]; int health; int attack; int defense; int speed;};
+struct pokemon {char name[256]; int health; int attack; int defense; int speed;};
 
 void print_pokemon(struct pokemon p) {
   printf("Your Pokemon:\n\tname: %s\n\thealth: %d\n\tattack: %d\n\tdefense: %d\n\tspeed: %d\n\n", p.name, p.health, p.attack, p.defense ,p.speed);
@@ -42,6 +42,10 @@ void set_everything(struct pokemon* p, int new_health, int new_attack, int new_d
   p->speed = new_speed;
 }
 
+void set_name(struct pokemon* p, char* new_name) {
+  strncpy(p->name, new_name, 255);
+}
+
 void set_health(struct pokemon* p, int new_health) {
   p->health = new_health;
 }
@@ -61,6 +65,11 @@ void set_speed(struct pokemon* p, int new_speed) {
 int main() {
   srand(time(NULL));
   struct pokemon p = rand_pokemon();
+  print_pokemon(p);
+  printf("char* new_name = \"digimon\"\n");
+  printf("changing name to \"digimon\"\n\tchar* new_name = \"digimon\"\n\tset_name(&p, new_name)\n");
+  char* new_name = "digimon";
+  set_name(&p, new_name);
   print_pokemon(p);
 
   printf("changing health to 101\n\tset_health(&p, 101)\n");
