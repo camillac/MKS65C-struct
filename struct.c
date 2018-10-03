@@ -3,7 +3,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-struct pokemon {char name[256]; int health; int attack; int defense; int speed;};
+struct pokemon {char name[6]; int health; int attack; int defense; int speed;};
 
 void print_pokemon(struct pokemon p) {
   printf("Your Pokemon:\n\tname: %s\n\thealth: %d\n\tattack: %d\n\tdefense: %d\n\tspeed: %d\n\n", p.name, p.health, p.attack, p.defense ,p.speed);
