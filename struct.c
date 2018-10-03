@@ -46,6 +46,10 @@ void set_name(struct pokemon* p, char* new_name) {
   strncpy(p->name, new_name, 255);
 }
 
+void append_to_name(struct pokemon* p, char* to_append) {
+  strcat(p->name, to_append);
+}
+
 void set_health(struct pokemon* p, int new_health) {
   p->health = new_health;
 }
@@ -66,10 +70,14 @@ int main() {
   srand(time(NULL));
   struct pokemon p = rand_pokemon();
   print_pokemon(p);
-  printf("char* new_name = \"digimon\"\n");
   printf("changing name to \"digimon\"\n\tchar* new_name = \"digimon\"\n\tset_name(&p, new_name)\n");
   char* new_name = "digimon";
   set_name(&p, new_name);
+  print_pokemon(p);
+
+  printf("changing name to \"digimon_boi\"\n\tchar to_append[] = \"_boi\"\n\tappend_to_name(&p, to_append)\n");
+  char to_append[] = "_boi";
+  append_to_name(&p, to_append);
   print_pokemon(p);
 
   printf("changing health to 101\n\tset_health(&p, 101)\n");
